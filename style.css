@@ -154,14 +154,14 @@ body {
   left: 2px;
   width: 24px;
   height: 24px;
-  background: #fff;
+  background: #6071bd;
   border-radius: 50%;
   box-shadow: var(--shadow);
   transition: transform .25s ease;
 }
 
 [data-theme="dark"] .thumb {
-  background: #111827;
+  background: #93a0ad;
 }
 
 [data-theme="dark"] .toggle {
@@ -332,4 +332,18 @@ section {
 
 [dir="rtl"] .cta {
   flex-direction: row-reverse; /* кнопки в обратную сторону */
+}
+
+.switchers {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .switchers {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
 }

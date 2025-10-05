@@ -135,7 +135,7 @@ function setTheme(theme) {
   const isDark = theme === 'dark';
   $('#theme-toggle').classList.toggle('active', isDark);
   $('#theme-toggle').setAttribute('aria-checked', String(isDark));
-  $('#theme-label').textContent = isDark ? 'Dark' : 'Light';
+  $('#theme-label').textContent = isDark ? 'Light' : 'Dark';
 
   localStorage.setItem('theme', theme);
 }
