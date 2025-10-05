@@ -24,7 +24,7 @@
    переменные перепишутся под тёмный стиль.
    =============================== */
 [data-theme="dark"] {
-  --bg: #080e1a;       /* Тёмный фон */
+  --bg: #0b1220;       /* Тёмный фон */
   --text: #e5e7eb;     /* Светлый текст */
   --muted: #9ca3af;    /* Серый текст */
   --card: #0f172a;     /* Карточки на тёмном фоне */
@@ -154,7 +154,7 @@ body {
   left: 2px;
   width: 24px;
   height: 24px;
-  background: #6071bd;
+  background: #3c51b1;
   border-radius: 50%;
   box-shadow: var(--shadow);
   transition: transform .25s ease;
