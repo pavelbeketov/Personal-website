@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Pavel Beketov — Front‑End Developer</title>
+  <meta name="description" content="I build modern, responsive websites. One-time delivery or ongoing support (₪100/mo for 10 edits). EN/HE + light/dark." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Pavel.dev</div>
+      <div class="spacer"></div>
+      <div class="links">
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="spacer"></div>
+      <div class="controls">
+        <!-- Language switch -->
+        <div class="segmented" role="group" aria-label="Language switch">
+          <button id="lang-en" class="active" aria-pressed="true">EN</button>
+          <button id="lang-he" aria-pressed="false">HE</button>
+        </div>
+        <!-- Theme switch -->
+        <label class="switch" aria-label="Theme switch">
+          <span id="theme-label" class="ghost">Light</span>
+          <div id="theme-toggle" class="toggle" role="switch" aria-checked="false" tabindex="0">
+            <div class="thumb"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <div class="hero-card">
+      <div class="card card-pad">
+        <h1 data-i18n="hero_title">I build modern, responsive websites for small businesses and personal brands.</h1>
+        <p class="lead" data-i18n="hero_subtitle">Choose a one‑time delivery or ongoing support. Fast, clean, and mobile‑first.</p>
+        <div class="cta">
+          <a href="#pricing" class="btn" data-i18n="cta_get_started">Get Started</a>
+          <a href="#contact" class="btn alt" data-i18n="cta_contact_me">Contact Me</a>
+        </div>
+      </div>
+      <div class="card card-pad">
+        <ul style="margin:0; padding-left:18px">
+          <li data-i18n="usp1">Fast delivery and clean code</li>
+          <li data-i18n="usp2">SEO-friendly and mobile-first</li>
+          <li data-i18n="usp3">Hosting on GitHub Pages or your domain</li>
+          <li data-i18n="usp4">Clear pricing with flexible support</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section id="services">
+    <h2 data-i18n="services_title">Services</h2>
+    <div class="grid-3">
+      <div class="tile">
+        <h3 data-i18n="s1_title">One‑time Website</h3>
+        <p class="ghost" data-i18n="s1_desc">I create a clean, fast and mobile‑friendly site and hand it off to you.</p>
+      </div>
+      <div class="tile">
+        <h3 data-i18n="s2_title">Website + Ongoing Support</h3>
+        <p class="ghost" data-i18n="s2_desc">I build your site and provide continuous updates and care.</p>
+      </div>
+      <div class="tile">
+        <h3 data-i18n="s3_title">Extras</h3>
+        <p class="ghost" data-i18n="s3_desc">Custom domains, analytics, basic SEO, performance checks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <h2 data-i18n="pricing_title">Pricing</h2>
+    <div class="price">
+      <div class="plan">
+        <div class="hd" data-i18n="plan_basic_hd">Basic — One‑time delivery</div>
+        <div class="bd">
+          <div class="price-tag" data-i18n="plan_basic_price">from ₪X</div>
+          <p class="hint" data-i18n="plan_basic_hint">Exact quote after a short brief call.</p>
+          <ul>
+            <li data-i18n="plan_basic_1">Responsive design (mobile/desktop)</li>
+            <li data-i18n="plan_basic_2">Deployed to GitHub Pages or your hosting</li>
+            <li data-i18n="plan_basic_3">Handover with instructions</li>
+          </ul>
+          <a href="#contact" class="btn" data-i18n="plan_btn">Request a quote</a>
+        </div>
+      </div>
+      <div class="plan">
+        <div class="hd" data-i18n="plan_support_hd">Support Plan — Website + Care</div>
+        <div class="bd">
+          <div class="price-tag" data-i18n="plan_support_price">₪100 / month</div>
+          <p class="hint" data-i18n="plan_support_hint">Includes up to 10 edits per month.</p>
+          <ul>
+            <li data-i18n="plan_support_1">Content & visual updates</li>
+            <li data-i18n="plan_support_2">Minor features & bug fixes</li>
+            <li data-i18n="plan_support_3">Performance & uptime checks</li>
+          </ul>
+          <a href="#contact" class="btn" data-i18n="plan_btn">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 data-i18n="contact_title">Contact</h2>
+    <div class="grid-3">
+      <div class="tile">
+        <h3>Email</h3>
+        <p><a id="emailLink" href="mailto:you@example.com">you@example.com</a></p>
+      </div>
+      <div class="tile">
+        <h3>WhatsApp</h3>
+        <p><a id="waLink" href="https://wa.me/9720000000000" target="_blank" rel="noopener">+972 00 000 0000</a></p>
+      </div>
+      <div class="tile">
+        <h3 data-i18n="contact_brief_title">Brief</h3>
+        <p class="ghost" data-i18n="contact_brief_desc">Send me 3–5 links to sites you like and a short description of your goals.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Pavel Beketov — <span data-i18n="footer_note">Web development services in Israel</span></small>
+  </footer>
+<script src="./script.js"></script>
+</body>
+</html>
