@@ -1,96 +1,335 @@
-    :root{
-      --bg: #ffffff;
-      --text: #111827; /* slate-900 */
-      --muted:#6b7280; /* gray-500 */
-      --card:#ffffff;
-      --line:#e5e7eb; /* gray-200 */
-      --brand:#2563eb; /* blue-600 */
-      --brand-2:#1d4ed8; /* blue-700 */
-      --ok:#16a34a; --warn:#f59e0b; --err:#dc2626;
-      --radius:16px;
-      --shadow: 0 10px 30px rgba(37, 99, 235, .15);
-    }
-    [data-theme="dark"]{
-      --bg: #0b1220;
-      --text: #e5e7eb;
-      --muted:#9ca3af;
-      --card:#0f172a; /* slate-900 */
-      --line:#1f2937;
-      --brand:#60a5fa; /* blue-400 */
-      --brand-2:#3b82f6;
-      --shadow: 0 10px 30px rgba(59, 130, 246, .25);
-    }
+/* ===============================
+   ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ (цвета, размеры, тени)
+   Используем :root — это корень документа (html).
+   Здесь задаются переменные (var), которые можно потом использовать в коде.
+   =============================== */
+:root {
+  --bg: #ffffff;       /* Цвет фона (светлый режим) */
+  --text: #111827;     /* Цвет текста (очень тёмный серый, slate-900) */
+  --muted: #6b7280;    /* Дополнительный текст, серый (gray-500) */
+  --card: #ffffff;     /* Фон карточек */
+  --line: #e5e7eb;     /* Линии/границы (gray-200) */
+  --brand: #2563eb;    /* Основной брендовый цвет (синий-600) */
+  --brand-2: #1d4ed8;  /* Второй оттенок синего */
+  --ok: #16a34a;       /* Цвет "успешно" (зелёный) */
+  --warn: #f59e0b;     /* Цвет "предупреждение" (оранжевый) */
+  --err: #dc2626;      /* Цвет "ошибка" (красный) */
+  --radius: 16px;      /* Радиус скругления углов */
+  --shadow: 0 10px 30px rgba(37, 99, 235, .15); /* Тень */
+}
 
-    *{box-sizing:border-box}
-    html,body{margin:0}
-    body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.08), transparent 50%),
-                  radial-gradient(1200px 600px at 110% 10%, rgba(37,99,235,.08), transparent 50%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.6;
-    }
+/* ===============================
+   ТЁМНАЯ ТЕМА
+   Когда у body будет data-theme="dark", 
+   переменные перепишутся под тёмный стиль.
+   =============================== */
+[data-theme="dark"] {
+  --bg: #0b1220;       /* Тёмный фон */
+  --text: #e5e7eb;     /* Светлый текст */
+  --muted: #9ca3af;    /* Серый текст */
+  --card: #0f172a;     /* Карточки на тёмном фоне */
+  --line: #1f2937;     /* Цвет линий */
+  --brand: #60a5fa;    /* Голубой (основной брендовый в dark) */
+  --brand-2: #3b82f6;  /* Синий оттенок */
+  --shadow: 0 10px 30px rgba(59, 130, 246, .25); /* Более сильная тень */
+}
 
-    /* Header */
-    .nav{
-      position:sticky; top:0; z-index:1000;
-      backdrop-filter:saturate(1.2) blur(10px);
-      background: color-mix(in oklab, var(--bg), transparent 20%);
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:16px; padding:12px 20px;}
-    .brand{font-weight:800; letter-spacing:.2px;}
-    .spacer{flex:1}
-    .nav a{color:var(--text); text-decoration:none; font-weight:500; margin:0 8px;}
-    .nav a:hover{color:var(--brand)}
+/* ===============================
+   БАЗОВЫЕ СТИЛИ
+   =============================== */
+* {
+  box-sizing: border-box; /* Чтобы padding и border учитывались в ширину блока */
+}
 
-    .controls{display:flex; align-items:center; gap:10px}
-    .segmented{display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden}
-    .segmented button{
-      appearance:none; border:0; background:transparent; padding:6px 12px; font-weight:600; color:var(--muted); cursor:pointer
-    }
-    .segmented button.active{background:var(--brand); color:white}
+html, body {
+  margin: 0; /* убираем отступы браузера */
+}
 
-    .switch{display:inline-flex; align-items:center; gap:8px; font-weight:600; color:var(--muted)}
-    .toggle{position:relative; width:48px; height:28px; background:var(--line); border-radius:999px; cursor:pointer; border:1px solid var(--line)}
-    .thumb{position:absolute; top:2px; left:2px; width:24px; height:24px; background:#fff; border-radius:50%; box-shadow:var(--shadow); transition:transform .25s ease}
-    [data-theme="dark"] .thumb{background:#111827}
-    [data-theme="dark"] .toggle{background:#0b1220}
-    .toggle.active .thumb{transform:translateX(20px)}
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  /* Фон: белый + два радиальных градиента для красоты */
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(37, 99, 235, .08), transparent 50%),
+    radial-gradient(1200px 600px at 110% 10%, rgba(37, 99, 235, .08), transparent 50%),
+    var(--bg);
+  color: var(--text); /* Основной цвет текста */
+  line-height: 1.6;   /* Расстояние между строками */
+}
 
-    /* Hero */
-    .hero{max-width:1100px; margin:0 auto; padding:56px 20px 28px}
-    .hero-card{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:stretch}
-    @media (max-width: 860px){.hero-card{grid-template-columns:1fr}}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
-    .card-pad{padding:28px}
-    h1{font-size:clamp(28px, 4.2vw, 44px); line-height:1.15; margin:0 0 12px}
-    .lead{color:var(--muted); font-size:clamp(16px, 2.2vw, 18px)}
-    .cta{display:flex; gap:12px; margin-top:18px}
-    .btn{
-      border:0; border-radius:12px; padding:12px 16px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
-      background:var(--brand); color:white
-    }
-    .btn.alt{background:transparent; color:var(--brand); border:1px solid var(--brand)}
+/* ===============================
+   ШАПКА (HEADER / NAVBAR)
+   =============================== */
+.nav {
+  position: sticky; /* Приклеиваем к верху */
+  top: 0;
+  z-index: 1000; /* Чтобы была поверх других элементов */
+  backdrop-filter: saturate(1.2) blur(10px); /* Размытие + насыщенность */
+  background: color-mix(in oklab, var(--bg), transparent 20%); /* прозрачный фон */
+  border-bottom: 1px solid var(--line); /* линия снизу */
+}
 
-    /* Sections */
-    section{max-width:1100px; margin:0 auto; padding:44px 20px}
-    .grid-3{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
-    @media (max-width: 900px){.grid-3{grid-template-columns:1fr}}
-    .tile{padding:22px; border:1px solid var(--line); border-radius:var(--radius); background:var(--card)}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex; /* расположение элементов в линию */
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+}
 
-    .price{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px}
-    @media (max-width: 900px){.price{grid-template-columns:1fr}}
-    .plan{border:1px solid var(--line); border-radius:var(--radius); background:var(--card); overflow:hidden}
-    .plan .hd{padding:18px 22px; border-bottom:1px solid var(--line); font-weight:800; letter-spacing:.2px}
-    .plan .bd{padding:22px}
-    .price-tag{font-size:28px; font-weight:800}
-    .hint{color:var(--muted); font-size:14px}
+.brand {
+  font-weight: 800; /* Жирный логотип/название */
+  letter-spacing: .2px;
+}
 
-    .footer{border-top:1px solid var(--line); padding:28px 20px; color:var(--muted); text-align:center}
-    .ghost{opacity:.7}
-    
-    /* Direction helpers when switching languages */
-    [dir="rtl"] .nav a{margin:0 0 0 8px}
-    [dir="rtl"] .cta{flex-direction:row-reverse}
+.spacer {
+  flex: 1; /* "растягивает" пустое пространство */
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 8px;
+}
+
+.nav a:hover {
+  color: var(--brand); /* при наведении становится синим */
+}
+
+/* ===============================
+   КНОПКИ УПРАВЛЕНИЯ (светлая/тёмная тема, переключатели языка)
+   =============================== */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Кнопки в виде сегментов (табов) */
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px; /* "пилюля" */
+  overflow: hidden;
+}
+
+.segmented button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 6px 12px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.segmented button.active {
+  background: var(--brand);
+  color: white;
+}
+
+/* Тумблер (переключатель темы) */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  background: var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease;
+}
+
+[data-theme="dark"] .thumb {
+  background: #111827;
+}
+
+[data-theme="dark"] .toggle {
+  background: #0b1220;
+}
+
+.toggle.active .thumb {
+  transform: translateX(20px); /* Перемещает кружок вправо */
+}
+
+/* ===============================
+   HERO (главный блок сверху)
+   =============================== */
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 20px 28px;
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr; /* Две колонки: текст + картинка */
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .hero-card {
+    grid-template-columns: 1fr; /* На мобилке одна колонка */
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card-pad {
+  padding: 28px;
+}
+
+h1 {
+  font-size: clamp(28px, 4.2vw, 44px); /* адаптивный размер */
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: clamp(16px, 2.2vw, 18px);
+}
+
+.cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  background: var(--brand);
+  color: white;
+}
+
+.btn.alt {
+  background: transparent;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+}
+
+/* ===============================
+   СЕКЦИИ (features, pricing и т.д.)
+   =============================== */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 44px 20px;
+}
+
+/* Три карточки в ряд */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: 1fr; /* на мобилке одна карточка */
+  }
+}
+
+.tile {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+/* Блок с ценами */
+.price {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .price {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plan {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+}
+
+.plan .hd {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.plan .bd {
+  padding: 22px;
+}
+
+.price-tag {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ===============================
+   ПОДВАЛ (FOOTER)
+   =============================== */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.ghost {
+  opacity: .7; /* делает текст полупрозрачным */
+}
+
+/* ===============================
+   RTL (право-налево, для иврита/арабского)
+   =============================== */
+[dir="rtl"] .nav a {
+  margin: 0 0 0 8px;
+}
+
+[dir="rtl"] .cta {
+  flex-direction: row-reverse; /* кнопки в обратную сторону */
+}
