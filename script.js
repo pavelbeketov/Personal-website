@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#year').textContent = new Date().getFullYear();
 
   // Контакты (меняются только здесь)
-  const EMAIL = 'you@example.com';
+  const EMAIL = 'pavel.beketov.dev@gmail.com';
   const WA = '9720000000000';
   const WA_HUMAN = '+972 00 000 0000';
 
