@@ -46,7 +46,7 @@ const t = {
 
     contact_title: 'Contact',
     contact_brief_title: 'Brief',
-    contact_brief_desc: 'Send me 3–5 links to sites you like and a short description of your goals.',
+    contact_brief_desc: 'Have a question? Feel free to ask for details.',
 
     footer_note: 'Web development services in Israel'
   },
@@ -95,7 +95,7 @@ const t = {
 
     contact_title: 'צור קשר',
     contact_brief_title: 'בריף',
-    contact_brief_desc: 'שלח לי 3–5 קישורים לאתרים שאתה אוהב ותיאור קצר של המטרות.',
+    contact_brief_desc: 'יש לך שאלה? אל תהסס לבקש פרטים',
 
     footer_note: 'שירותי פיתוח אתרים בישראל'
   }
@@ -183,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Контакты (меняются только здесь)
   const EMAIL = 'pavel.beketov.dev@gmail.com';
-  const WA = '9720000000000';
-  const WA_HUMAN = '+972 00 000 0000';
+  const WA = '+972552576965';
+  const WA_HUMAN = '+972552576965';
 
   $('#emailLink').href = `mailto:${EMAIL}`;
   $('#emailLink').textContent = EMAIL;
